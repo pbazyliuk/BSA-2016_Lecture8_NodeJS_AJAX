@@ -1,0 +1,30 @@
+ 	.container {
+ 		width: 500px;
+ 		margin: 0 auto;
+ 	}
+
+ 	.name {
+        color: blue;
+        font-size: 14px;
+    }
+  
+    .quote { 
+        color: black;
+        font-size: 14px;
+    }
+
+    ul {    	
+    	padding: 0;
+    }
+
+    li {
+    	list-style: none;
+    }
+  
+    li:nth-child(odd) {
+        background: lightgrey;
+    }
+  
+    li:nth-child(even) {
+        background: GhostWhite;
+    }

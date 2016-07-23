@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    
+    <h1>Simple Chat</h1>
+
+    <ul class="quotes">
+      <% for(var i=0; i<quotes.length; i++) {%>
+        <li class="quote">
+          <span class="name"><%= quotes[i].name %> - </span>
+          <span class="quote"><%= quotes[i].quote %></span>
+        </li>
+      <% } %>
+    </ul>
+
+    <h2>Add a message</h2>
+
+    <form>
+      <input type="text" placeholder="name" name="name" id="name">
+      <input type="text" placeholder="message" name="quote" id="quote">
+      <button id="submit" type="submit">Submit</button>
+    </form>
+
+  </div>
+
+  <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>  
+  <script type="text/javascript">
+
+            $(function(){  
+                $('#submit').click(function(e){
+                    e.preventDefault();
+                    var user = 'User';
+                    var name = $('#name').val() || user;
+                    var quote = $('#quote').val();
+                    if(!quote) {
+                      return;
+                    }
+
+                    var data = {};
+                      data.name = name;
+                      data.quote = quote;
+                      console.log(data);
+
+                    var jqxhr = $.post('/quotes', data);
+
+                    jqxhr.success(function (result) {
+                      console.log("ok!");
+                    });
+                    
+                    jqxhr.error(function () {
+                        console.log("error!");
+                    });
+                    
+                    location.reload();
+                  });       
+            });
+
+    </script>
+
+</body>
+</html>
